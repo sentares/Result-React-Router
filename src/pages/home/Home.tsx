@@ -5,8 +5,8 @@ import { internalPaths } from '@/app/router/RoutePaths'
 export function Home() {
 	return (
 		<div className={styles.home}>
-			<h1>Добро пожаловать во вселенную Рика и Морти!</h1>
-			<p>Выберите категорию в навигации</p>
+			<h1>Welcome to the Rick and Morty Universe!</h1>
+			<p>Select a category from the navigation</p>
 
 			<div className={styles.links}>
 				<Link to={internalPaths.characters.list}>Characters</Link>
