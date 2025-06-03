@@ -8,11 +8,25 @@ body {
 	background: var(--bg-color);
 }
 
+a {
+	color: var(--inverted-bg-color);
+}
+
 .app {
 	font: var(--font-m);
 	background: var(--bg-color);
 	color: var(--primary-color);
 	min-height: 100vh;
+}
+
+.category {
+	margin: 20px;
+}
+
+a {
+	&:hover {
+		color: var(--primary-color-light);
+	}
 }
 
 .asterisk {
