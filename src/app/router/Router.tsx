@@ -1,5 +1,7 @@
 import { CharacterDetail } from '@/pages/characters/detail'
 import { CharactersList } from '@/pages/characters/list'
+import { EpisodeDetail } from '@/pages/episodes/detail'
+import { EpisodesList } from '@/pages/episodes/list'
 import { Home } from '@/pages/home'
 import { LocationDetail } from '@/pages/locations/detail'
 import { LocationsList } from '@/pages/locations/list'
@@ -39,6 +41,20 @@ const Router = createBrowserRouter([
 					{
 						path: ':id',
 						element: <LocationDetail />,
+					},
+				],
+			},
+
+			{
+				path: internalPaths.episodes.list,
+				children: [
+					{
+						index: true,
+						element: <EpisodesList />,
+					},
+					{
+						path: ':id',
+						element: <EpisodeDetail />,
 					},
 				],
 			},
