@@ -1,4 +1,4 @@
-import { Navbar } from '@/copmonents/common'
+import { Navbar } from '@/copmonents/common/navbar'
 import { Outlet } from 'react-router-dom'
 import styles from './Layout.module.scss'
 
