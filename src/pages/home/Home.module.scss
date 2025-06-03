@@ -1,0 +1,28 @@
+.home {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	background: var(--bg-color);
+	color: var(--light-text-color);
+	padding: 2rem;
+
+	.links {
+		margin: 20px;
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+
+		a {
+			text-decoration: none;
+			position: relative;
+			transition: color 0.2s;
+
+			&:hover {
+				color: var(--primary-color-light);
+			}
+		}
+	}
+}
