@@ -1,20 +1,32 @@
 import { internalPaths } from '@/app/router'
-import { Episodes } from '@/data'
+import { Sorting } from '@/components/common/sotring'
+import { getCategoryFromPath } from '@/core/helpers/category'
+import { sortByCreated } from '@/core/helpers/sort'
+import { useSortParam } from '@/core/hooks'
+import { Episodes, type Episode } from '@/data'
+import { useMemo } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 
 export function EpisodesList() {
 	const { pathname } = useLocation()
-	const category = pathname.split('/')[1]
+	const category = getCategoryFromPath(pathname)
+	const sort = useSortParam()
+
+	const sortedData = useMemo(() => {
+		return sortByCreated(Episodes, sort)
+	}, [sort])
 
 	return (
 		<div>
 			<h1 className='category'>{category.toUpperCase()}</h1>
 
+			<Sorting />
+
 			<ul>
-				{Episodes.map(item => (
-					<li key={item.id}>
-						<Link to={internalPaths.episodes.detail(String(item.id))}>
-							{item.name}
+				{sortedData.map((episode: Episode) => (
+					<li key={episode.id}>
+						<Link to={internalPaths.episodes.detail(String(episode.id))}>
+							{episode.name}
 						</Link>
 					</li>
 				))}
