@@ -19,6 +19,16 @@ a {
 	min-height: 100vh;
 }
 
+.category {
+	margin: 20px;
+}
+
+a {
+	&:hover {
+		color: var(--primary-color-light);
+	}
+}
+
 .asterisk {
 	color: var(--destructive-color);
 	margin-left: 2px;

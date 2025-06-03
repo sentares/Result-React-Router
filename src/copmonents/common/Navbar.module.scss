@@ -38,6 +38,7 @@
 
 			&.active {
 				font-weight: bold;
+				color: var(--light-hover-text);
 
 				&::after {
 					width: 100%;
