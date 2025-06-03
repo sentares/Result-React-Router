@@ -1,6 +1,6 @@
 import { useSearchParams } from 'react-router-dom'
-import type { SortType } from './types'
 import styles from './Sorting.module.scss'
+import type { SortType } from '@/core/helpers/sort'
 
 interface SortingProps {
 	onChange?: (sort: SortType) => void
@@ -10,8 +10,8 @@ export function Sorting({ onChange }: SortingProps) {
 	const [searchParams, setSearchParams] = useSearchParams()
 	const sort = (searchParams.get('sort') || '') as SortType
 
-	const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-		const newSort = e.target.value as SortType
+	const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+		const newSort = event.target.value as SortType
 		const newParams = new URLSearchParams(searchParams)
 
 		if (newSort) {
