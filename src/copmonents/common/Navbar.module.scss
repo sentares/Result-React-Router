@@ -1,0 +1,48 @@
+.navbar {
+	padding: 1rem 2rem;
+	position: sticky;
+	top: 0;
+	z-index: 100;
+
+	.container {
+		max-width: 1200px;
+		margin: 0 auto;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	.brand {
+		font-size: var(--font-size-xl);
+		font-weight: bold;
+		text-decoration: none;
+		transition: opacity 0.2s;
+
+		&:hover {
+			opacity: 0.8;
+		}
+	}
+
+	.links {
+		display: flex;
+		gap: 26px;
+
+		a {
+			text-decoration: none;
+			position: relative;
+			transition: color 0.2s;
+
+			&:hover {
+				color: var(--primary-color-light);
+			}
+
+			&.active {
+				font-weight: bold;
+
+				&::after {
+					width: 100%;
+				}
+			}
+		}
+	}
+}
