@@ -1,10 +1,12 @@
+import { CharacterDetail } from '@/pages/characters/detail'
+import { CharactersList } from '@/pages/characters/list'
 import { Home } from '@/pages/home'
+import { LocationDetail } from '@/pages/locations/detail'
+import { LocationsList } from '@/pages/locations/list'
 import { NotFound } from '@/pages/not-found'
 import { createBrowserRouter } from 'react-router-dom'
 import Layout from '../layouts/Layout'
 import { internalPaths } from './RoutePaths'
-import { CharactersList } from '@/pages/characters/list'
-import { CharacterDetail } from '@/pages/characters/detail'
 
 const Router = createBrowserRouter([
 	{
@@ -23,6 +25,20 @@ const Router = createBrowserRouter([
 					{
 						path: ':id',
 						element: <CharacterDetail />,
+					},
+				],
+			},
+
+			{
+				path: internalPaths.locations.list,
+				children: [
+					{
+						index: true,
+						element: <LocationsList />,
+					},
+					{
+						path: ':id',
+						element: <LocationDetail />,
 					},
 				],
 			},
