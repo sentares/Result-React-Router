@@ -1,4 +1,4 @@
-import { internalPaths } from '@/app/router/RoutePaths'
+import { internalPaths } from '@/app/router'
 import { Episodes } from '@/data'
 import { Link, useLocation } from 'react-router-dom'
 
