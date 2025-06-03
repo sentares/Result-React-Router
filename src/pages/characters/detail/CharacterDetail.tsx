@@ -3,11 +3,14 @@ import { Characters, type Character } from '@/data'
 import { Link, useParams } from 'react-router-dom'
 import styles from './CharacterDetail.module.scss'
 
+const getCharacterById = (id: string | undefined): Character | undefined => {
+	if (!id) return undefined
+	return Characters.find(char => String(char.id) === id)
+}
+
 export function CharacterDetail() {
 	const { id } = useParams<{ id: string }>()
-	const character: Character | undefined = Characters.find(
-		char => String(char.id) === id
-	)
+	const character: Character | undefined = getCharacterById(id)
 
 	if (!character) {
 		return (
