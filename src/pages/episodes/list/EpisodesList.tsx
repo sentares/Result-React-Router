@@ -1,5 +1,5 @@
 import { internalPaths } from '@/app/router'
-import { Sorting } from '@/components/common/sotring'
+import { Sorting } from '@/components/common/sorting'
 import { getCategoryFromPath } from '@/core/helpers/category'
 import { sortByCreated } from '@/core/helpers/sort'
 import { useSortParam } from '@/core/hooks'
