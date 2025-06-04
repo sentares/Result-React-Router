@@ -1,13 +1,13 @@
+import { useAuth } from '@/app/context'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { generateToken } from '@/core/helpers/token'
 import { isEmail, minLength } from '@/core/helpers/validate'
-import { useLocalStorage } from '@/core/hooks'
+import { useRedirectFrom } from '@/core/hooks'
 import { IconAt, IconEye, IconEyeOff, IconLock } from '@tabler/icons-react'
 import { useRef, useState, type ChangeEvent, type FormEvent } from 'react'
 import { useNavigate } from 'react-router-dom'
 import styles from './Login.module.scss'
-
 export interface LoginOptions {
 	email: string
 	password: string
@@ -17,13 +17,15 @@ export function Login() {
 	const navigate = useNavigate()
 	const formRef = useRef<HTMLFormElement>(null)
 
+	const from = useRedirectFrom()
+	const { login } = useAuth()
+
 	const [inputs, setInputs] = useState<LoginOptions>({
 		email: '',
 		password: '',
 	})
 	const [errors, setErrors] = useState<Partial<LoginOptions>>({})
 	const [showPassword, setShowPassword] = useState(false)
-	const [token, { setItem: saveToken }] = useLocalStorage('auth_token')
 
 	const handleChange = (event: ChangeEvent<HTMLFormElement>) => {
 		const target = event.target as HTMLElement
@@ -61,8 +63,8 @@ export function Login() {
 
 	const onSubmit = (inputs: LoginOptions) => {
 		const token = generateToken(inputs.email)
-		saveToken(token)
-		navigate('/')
+		login(token)
+		navigate(from, { replace: true })
 	}
 
 	const handleSubmit = (event: FormEvent) => {
