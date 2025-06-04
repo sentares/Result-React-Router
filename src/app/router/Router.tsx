@@ -9,6 +9,7 @@ import { NotFound } from '@/pages/not-found'
 import { createBrowserRouter } from 'react-router-dom'
 import Layout from '../layouts/Layout'
 import { internalPaths } from './RoutePaths'
+import { Login } from '@/pages/login'
 
 const Router = createBrowserRouter([
 	{
@@ -17,6 +18,9 @@ const Router = createBrowserRouter([
 		errorElement: <NotFound />,
 		children: [
 			{ index: true, element: <Home /> },
+
+			{ path: internalPaths.login, element: <Login /> },
+
 			{
 				path: internalPaths.characters.list,
 				children: [
