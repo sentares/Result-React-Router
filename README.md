@@ -8,6 +8,13 @@ A simple multi-page React application built with **React**, **TypeScript**, **Vi
 - 🔍 Sorting by creation date (ASC/DESC) via query params
 - 🧭 Persistent navigation panel across all pages
 - ❌ 404 Not Found page
+- 🧱 Private Routes
+- 🔐 Authentication 
+
+## Private Routes
+- Any routes wrapped with `<PrivateRouter>` require the user to be authenticated.
+- If the user is not authenticated, they are redirected to `/login`.
+- After login, the user is redirected back to the originally requested page.
 
 ## 📁 Pages Overview
 
@@ -28,6 +35,13 @@ A simple multi-page React application built with **React**, **TypeScript**, **Vi
 ### ❌ 404 Page
 - A custom Not Found page is shown for unmatched routes
 - You can choose to redirect back to the homepage or display a message
+
+### 🚪 Login Page
+- The login form requires **email** and **password** input fields
+- Email and password inputs are validated on the client side:
+  - Email format validation
+  - Password minimum length (6 characters)
+- Upon successful login, a token is generated
 
 ---
 
