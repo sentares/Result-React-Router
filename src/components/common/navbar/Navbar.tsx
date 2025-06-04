@@ -1,12 +1,23 @@
+import { useAuth } from '@/app/context'
 import { internalPaths } from '@/app/router/RoutePaths'
-import { Link, useLocation } from 'react-router-dom'
+import { Button } from '@/components/ui/button'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import styles from './Navbar.module.scss'
 
 export function Navbar() {
 	const location = useLocation()
+	const navigate = useNavigate()
+	const { isAuthenticated, logout } = useAuth()
 
-	const isActive = (path: string) => {
-		return location.pathname === path
+	const isActive = (path: string) => location.pathname === path
+
+	const handleLogout = () => {
+		logout()
+		navigate(internalPaths.home)
+	}
+
+	const handleLogin = () => {
+		navigate(internalPaths.login)
 	}
 
 	return (
@@ -40,6 +51,24 @@ export function Navbar() {
 					>
 						Episodes
 					</Link>
+
+					{!isAuthenticated ? (
+						<Button
+							variant='BACKGROUND'
+							className={styles.authButton}
+							onClick={handleLogin}
+						>
+							Login
+						</Button>
+					) : (
+						<Button
+							variant='LIGHT'
+							className={styles.authButton}
+							onClick={handleLogout}
+						>
+							Logout
+						</Button>
+					)}
 				</div>
 			</div>
 		</nav>
