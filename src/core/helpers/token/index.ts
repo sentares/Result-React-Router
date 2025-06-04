@@ -1,1 +1,1 @@
-export * from './generateToken'
+export * from './GenerateToken'
