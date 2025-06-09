@@ -12,7 +12,7 @@ A simple multi-page React application built with **React**, **TypeScript**, **Vi
 - 🔐 Authentication 
 
 ## Private Routes
-- Any routes wrapped with `<PrivateRouter>` require the user to be authenticated.
+- Any routes wrapped with `<PrivateRoute>` require the user to be authenticated.
 - If the user is not authenticated, they are redirected to `/login`.
 - After login, the user is redirected back to the originally requested page.
 
