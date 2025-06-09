@@ -8,7 +8,7 @@ const getCharacterById = (id: string | undefined): Character | undefined => {
 	return Characters.find(char => String(char.id) === id)
 }
 
-export function CharacterDetail() {
+export default function CharacterDetail() {
 	const { id } = useParams<{ id: string }>()
 	const character: Character | undefined = getCharacterById(id)
 

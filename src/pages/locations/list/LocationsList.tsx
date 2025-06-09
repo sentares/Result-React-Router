@@ -7,7 +7,7 @@ import { Locations, type Location } from '@/data'
 import { useMemo } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 
-export function LocationsList() {
+export default function LocationsList() {
 	const { pathname } = useLocation()
 	const category = getCategoryFromPath(pathname)
 	const sort = useSortParam()

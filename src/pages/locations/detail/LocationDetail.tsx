@@ -8,7 +8,7 @@ const getLocationById = (id: string | undefined): Location | undefined => {
 	return Locations.find(location => String(location.id) === id)
 }
 
-export function LocationDetail() {
+export default function LocationDetail() {
 	const { id } = useParams<{ id: string }>()
 	const location: Location | undefined = getLocationById(id)
 

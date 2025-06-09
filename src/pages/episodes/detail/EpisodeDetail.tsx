@@ -8,7 +8,7 @@ const getEpisodeById = (id: string | undefined): Episode | undefined => {
 	return Episodes.find(ep => String(ep.id) === id)
 }
 
-export function EpisodeDetail() {
+export default function EpisodeDetail() {
 	const { id } = useParams<{ id: string }>()
 	const episode = getEpisodeById(id)
 

@@ -13,7 +13,7 @@ export interface LoginOptions {
 	password: string
 }
 
-export function Login() {
+export default function Login() {
 	const navigate = useNavigate()
 	const formRef = useRef<HTMLFormElement>(null)
 

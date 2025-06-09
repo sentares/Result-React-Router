@@ -7,7 +7,7 @@ import { Episodes, type Episode } from '@/data'
 import { useMemo } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 
-export function EpisodesList() {
+export default function EpisodesList() {
 	const { pathname } = useLocation()
 	const category = getCategoryFromPath(pathname)
 	const sort = useSortParam()

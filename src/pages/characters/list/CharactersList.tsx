@@ -7,7 +7,7 @@ import { Characters, type Character } from '@/data'
 import { useMemo } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 
-export function CharactersList() {
+export default function CharactersList() {
 	const { pathname } = useLocation()
 	const category = getCategoryFromPath(pathname)
 	const sort = useSortParam()
