@@ -9,7 +9,7 @@ import { Login } from '@/pages/login'
 import { NotFound } from '@/pages/not-found'
 import { createBrowserRouter } from 'react-router-dom'
 import Layout from '../layouts/Layout'
-import { PrivateRouter } from './PrivateRouter'
+import { PrivateRoute } from './PrivateRoute'
 import { internalPaths } from './RoutePaths'
 
 const Router = createBrowserRouter([
@@ -21,7 +21,7 @@ const Router = createBrowserRouter([
 			{ index: true, element: <Home /> },
 
 			{
-				element: <PrivateRouter />,
+				element: <PrivateRoute />,
 				children: [
 					{
 						path: internalPaths.characters.list,

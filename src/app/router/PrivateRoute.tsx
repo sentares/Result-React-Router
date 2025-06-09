@@ -2,7 +2,7 @@ import { Navigate, Outlet, useLocation } from 'react-router-dom'
 import { useAuth } from '../context'
 import { internalPaths } from './RoutePaths'
 
-export const PrivateRouter = () => {
+export const PrivateRoute = () => {
 	const { isAuthenticated } = useAuth()
 	const location = useLocation()
 

@@ -1,3 +1,3 @@
 export * from './Router'
 export * from './RoutePaths'
-export * from './PrivateRouter'
+export * from './PrivateRoute'
