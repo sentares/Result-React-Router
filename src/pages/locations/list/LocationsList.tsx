@@ -9,7 +9,7 @@ import { Link, useLocation } from 'react-router-dom'
 
 const Sorting = (
 	props: Omit<ComponentProps<typeof DynamicComponent>, 'nameComponent'>
-) => <DynamicComponent nameComponent='Button' {...props} />
+) => <DynamicComponent nameComponent='Sorting' {...props} />
 
 export default function LocationsList() {
 	const { pathname } = useLocation()
