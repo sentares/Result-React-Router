@@ -1,17 +1,31 @@
 import { useAuth } from '@/app/context'
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
+import { DynamicComponent } from '@/components/common/dynamic'
 import { generateToken } from '@/core/helpers/token'
 import { isEmail, minLength } from '@/core/helpers/validate'
 import { useRedirectFrom } from '@/core/hooks'
 import { IconAt, IconEye, IconEyeOff, IconLock } from '@tabler/icons-react'
-import { useRef, useState, type ChangeEvent, type FormEvent } from 'react'
+import {
+	useRef,
+	useState,
+	type ChangeEvent,
+	type ComponentProps,
+	type FormEvent,
+} from 'react'
 import { useNavigate } from 'react-router-dom'
 import styles from './Login.module.scss'
+
 export interface LoginOptions {
 	email: string
 	password: string
 }
+
+const Input = (
+	props: Omit<ComponentProps<typeof DynamicComponent>, 'nameComponent'>
+) => <DynamicComponent nameComponent='Input' {...props} />
+
+const Button = (
+	props: Omit<ComponentProps<typeof DynamicComponent>, 'nameComponent'>
+) => <DynamicComponent nameComponent='Button' {...props} />
 
 export default function Login() {
 	const navigate = useNavigate()
