@@ -1,11 +1,15 @@
 import { internalPaths } from '@/app/router'
-import { Sorting } from '@/components/common/sorting'
+import { DynamicComponent } from '@/components/common/dynamic'
 import { getCategoryFromPath } from '@/core/helpers/category'
 import { sortByCreated } from '@/core/helpers/sort'
 import { useSortParam } from '@/core/hooks'
 import { Episodes, type Episode } from '@/data'
-import { useMemo } from 'react'
+import { useMemo, type ComponentProps } from 'react'
 import { Link, useLocation } from 'react-router-dom'
+
+const Sorting = (
+	props: Omit<ComponentProps<typeof DynamicComponent>, 'nameComponent'>
+) => <DynamicComponent nameComponent='Button' {...props} />
 
 export default function EpisodesList() {
 	const { pathname } = useLocation()
