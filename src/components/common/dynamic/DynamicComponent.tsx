@@ -38,7 +38,7 @@ const components: ComponentsMap = {
 
 export function DynamicComponent(props: {
 	nameComponent: keyof ComponentsMap
-	[key: string]: ReactNode
+	[key: string]: ReactNode | unknown
 }) {
 	const { nameComponent, ...rest } = props
 	const Component = components[nameComponent]
