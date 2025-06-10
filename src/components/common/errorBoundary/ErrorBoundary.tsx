@@ -1,6 +1,6 @@
 import { Component, type ErrorInfo, type ReactNode } from 'react'
 
-interface ErrorBoundaryProps {
+export interface ErrorBoundaryProps {
 	children: ReactNode
 }
 
