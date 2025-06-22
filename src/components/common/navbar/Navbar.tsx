@@ -1,13 +1,10 @@
 import { useAuth } from '@/app/context'
 import { internalPaths } from '@/app/router/RoutePaths'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { getDynamicComponent } from '../dynamic'
 import styles from './Navbar.module.scss'
-import { DynamicComponent } from '../dynamic'
-import type { ComponentProps } from 'react'
 
-const Button = (
-	props: Omit<ComponentProps<typeof DynamicComponent>, 'nameComponent'>
-) => <DynamicComponent nameComponent='Button' {...props} />
+const Button = getDynamicComponent('Button')
 
 export function Navbar() {
 	const location = useLocation()
