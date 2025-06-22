@@ -9,13 +9,27 @@ import {
 } from 'react'
 
 interface ComponentsMap {
-	Input: LazyExoticComponent<ComponentType<InputProps>>
-	Button: LazyExoticComponent<ComponentType<ButtonProps>>
-	Navbar: LazyExoticComponent<ComponentType>
-	Sorting: LazyExoticComponent<ComponentType>
+	Input: {
+		component: LazyExoticComponent<ComponentType<InputProps>>
+		props: InputProps
+	}
+	Button: {
+		component: LazyExoticComponent<ComponentType<ButtonProps>>
+		props: ButtonProps
+	}
+	Navbar: {
+		component: LazyExoticComponent<ComponentType>
+		props: Record<string, unknown>
+	}
+	Sorting: {
+		component: LazyExoticComponent<ComponentType>
+		props: Record<string, unknown>
+	}
 }
 
-const components: ComponentsMap = {
+const components: {
+	[K in keyof ComponentsMap]: ComponentsMap[K]['component']
+} = {
 	Input: lazy(() =>
 		import('@/components/ui/input').then(module => ({ default: module.Input }))
 	),
@@ -51,5 +65,13 @@ export function DynamicComponent(props: {
 		<Suspense fallback='Loading...'>
 			<Component {...rest} />
 		</Suspense>
+	)
+}
+
+export function getDynamicComponent<K extends keyof ComponentsMap>(
+	nameComponent: K
+) {
+	return (props: ComponentsMap[K]['props']) => (
+		<DynamicComponent nameComponent={nameComponent} {...props} />
 	)
 }
