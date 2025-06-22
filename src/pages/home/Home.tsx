@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import styles from './Home.module.scss'
 import { internalPaths } from '@/app/router/RoutePaths'
 
-export function Home() {
+export default function Home() {
 	return (
 		<div className={styles.home}>
 			<h1>Welcome to the Rick and Morty Universe!</h1>

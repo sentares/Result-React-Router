@@ -1,16 +1,15 @@
 import { internalPaths } from '@/app/router'
-import { Characters, type Character } from '@/data'
+import { useGetDetailCharacter } from '@/core/hooks/api/characters'
 import { Link, useParams } from 'react-router-dom'
 import styles from './CharacterDetail.module.scss'
 
-const getCharacterById = (id: string | undefined): Character | undefined => {
-	if (!id) return undefined
-	return Characters.find(char => String(char.id) === id)
-}
-
-export function CharacterDetail() {
+export default function CharacterDetail() {
 	const { id } = useParams<{ id: string }>()
-	const character: Character | undefined = getCharacterById(id)
+
+	const { error, loading, character } = useGetDetailCharacter(id ?? '')
+
+	if (loading) return <div>Loading...</div>
+	if (error || !character) return <div>Error loading character</div>
 
 	if (!character) {
 		return (

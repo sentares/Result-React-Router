@@ -1,1 +1,1 @@
-export * from './EpisodesList'
+export { default } from './EpisodesList'

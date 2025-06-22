@@ -23,7 +23,7 @@ export enum ButtonRadius {
 	XL = 'radius_xl',
 }
 
-interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 	className?: string
 	variant?: keyof typeof ButtonVariant
 	square?: boolean

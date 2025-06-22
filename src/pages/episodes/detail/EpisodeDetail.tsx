@@ -1,22 +1,21 @@
 import { internalPaths } from '@/app/router'
-import { Episodes, type Episode } from '@/data'
+import { useGetDetailEpisode } from '@/core/hooks/api/episodes'
 import { Link, useParams } from 'react-router-dom'
 import styles from './EpisodeDetail.module.scss'
 
-const getEpisodeById = (id: string | undefined): Episode | undefined => {
-	if (!id) return undefined
-	return Episodes.find(ep => String(ep.id) === id)
-}
-
-export function EpisodeDetail() {
+export default function EpisodeDetail() {
 	const { id } = useParams<{ id: string }>()
-	const episode = getEpisodeById(id)
+
+	const { error, loading, episode } = useGetDetailEpisode(id ?? '')
+
+	if (loading) return <div>Loading...</div>
+	if (error || !episode) return <div>Error loading episode</div>
 
 	if (!episode) {
 		return (
 			<div>
 				<h2>Episode not found</h2>
-				<Link to={internalPaths.episodes.list}>← Back to episodes list</Link>
+				<Link to={internalPaths.episodes.list}>← Back to list</Link>
 			</div>
 		)
 	}
