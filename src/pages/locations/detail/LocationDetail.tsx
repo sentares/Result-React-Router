@@ -1,16 +1,15 @@
 import { internalPaths } from '@/app/router'
-import { Locations, type Location } from '@/data'
+import { useGetDetailLocation } from '@/core/hooks/api/locations'
 import { Link, useParams } from 'react-router-dom'
 import styles from './LocationDetail.module.scss'
 
-const getLocationById = (id: string | undefined): Location | undefined => {
-	if (!id) return undefined
-	return Locations.find(location => String(location.id) === id)
-}
-
 export default function LocationDetail() {
 	const { id } = useParams<{ id: string }>()
-	const location: Location | undefined = getLocationById(id)
+
+	const { error, loading, location } = useGetDetailLocation(id ?? '')
+
+	if (loading) return <div>Loading...</div>
+	if (error || !location) return <div>Error loading location</div>
 
 	if (!location) {
 		return (
