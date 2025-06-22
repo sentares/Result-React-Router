@@ -1,4 +1,4 @@
-import { internalPaths } from '@/app/router'
+import { internalPaths } from '@/app/providers/router'
 import { useGetDetailEpisode } from '@/core/hooks/api/episodes'
 import { Link, useParams } from 'react-router-dom'
 import styles from './EpisodeDetail.module.scss'

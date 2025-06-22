@@ -1,14 +1,14 @@
-import { internalPaths } from '@/app/router'
-import { getDynamicComponent } from '@/components/common/dynamic'
+import { internalPaths } from '@/app/providers/router'
 import { getCategoryFromPath } from '@/core/helpers/category'
 import { useDebounce } from '@/core/hooks'
 import { useGetlocations } from '@/core/hooks/api/locations'
 import { type Location } from '@/data'
+import { Input } from '@mantine/core'
 import { useCallback, useRef, useState, type ChangeEvent } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import styles from './LocationList.module.scss'
 
-const Input = getDynamicComponent('Input')
+// const Input = getDynamicComponent('Input')
 
 export default function LocationsList() {
 	const { pathname } = useLocation()
