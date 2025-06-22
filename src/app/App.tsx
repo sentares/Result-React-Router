@@ -1,12 +1,16 @@
 import { RouterProvider } from 'react-router-dom'
-import Router from './router/Router'
-import { AuthProvider } from './context'
+import { AuthProvider } from './providers/context'
+import { Router } from './providers/router'
+import { MantineProvider } from '@mantine/core'
+import '@mantine/core/styles.css'
 
 function App() {
 	return (
-		<AuthProvider>
-			<RouterProvider router={Router} />
-		</AuthProvider>
+		<MantineProvider defaultColorScheme='dark'>
+			<AuthProvider>
+				<RouterProvider router={Router} />
+			</AuthProvider>
+		</MantineProvider>
 	)
 }
 

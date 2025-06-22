@@ -1,6 +1,6 @@
 import { Navigate, Outlet, useLocation } from 'react-router-dom'
-import { useAuth } from '../context'
 import { internalPaths } from './RoutePaths'
+import { useAuth } from '../context'
 
 export const PrivateRoute = () => {
 	const { isAuthenticated } = useAuth()
