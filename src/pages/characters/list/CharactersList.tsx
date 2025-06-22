@@ -1,44 +1,32 @@
 import { internalPaths } from '@/app/router'
-import { DynamicComponent } from '@/components/common/dynamic'
-import { Input } from '@/components/ui/input'
+import { getDynamicComponent } from '@/components/common/dynamic'
 import { getCategoryFromPath } from '@/core/helpers/category'
-import { useGetCharacters, useSortParam } from '@/core/hooks'
+import { useDebounce } from '@/core/hooks'
+import { useGetCharacters } from '@/core/hooks/api/characters'
 import { type Character } from '@/data'
-import {
-	useCallback,
-	useRef,
-	useState,
-	type ChangeEvent,
-	type ComponentProps,
-} from 'react'
+import { useCallback, useRef, useState, type ChangeEvent } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import styles from './CharactersList.module.scss'
 
-const Sorting = (
-	props: Omit<ComponentProps<typeof DynamicComponent>, 'nameComponent'>
-) => <DynamicComponent nameComponent='Sorting' {...props} />
-
-// const Input = (
-// 	props: Omit<ComponentProps<typeof DynamicComponent>, 'nameComponent'>
-// ) => <DynamicComponent nameComponent='Input' {...props} />
+const Input = getDynamicComponent('Input')
 
 export default function CharactersList() {
 	const { pathname } = useLocation()
 	const category = getCategoryFromPath(pathname)
-	const sort = useSortParam()
 
-	const [queryParams, setQueryParams] = useState({
-		search: '',
-		sort: '',
-	})
+	const observer = useRef<IntersectionObserver>(null)
 
 	const [pageNumber, setPageNumber] = useState(1)
+	const [inputSearch, setInputSearch] = useState('')
+	const [queryParams, setQueryParams] = useState({
+		search: '',
+	})
+
 	const { loading, error, characters, hasMore, notFound } = useGetCharacters(
 		queryParams,
 		pageNumber
 	)
 
-	const observer = useRef<IntersectionObserver>(null)
 	const lastCharacterRef = useCallback(
 		(node: HTMLLIElement) => {
 			if (loading) return
@@ -55,9 +43,20 @@ export default function CharactersList() {
 		[loading, hasMore]
 	)
 
+	useDebounce(
+		() => {
+			setQueryParams(prev => {
+				if (prev.search === inputSearch) return prev
+				setPageNumber(1)
+				return { ...prev, search: inputSearch }
+			})
+		},
+		500,
+		[inputSearch]
+	)
+
 	const handleChangeInput = (event: ChangeEvent<HTMLInputElement>) => {
-		setPageNumber(1)
-		setQueryParams(prev => ({ ...prev, search: event.target.value }))
+		setInputSearch(event.target.value)
 	}
 
 	return (
@@ -65,7 +64,6 @@ export default function CharactersList() {
 			<div className={styles.filterBar}>
 				<h1 className='category'>{category.toUpperCase()}</h1>
 				<Input onChange={handleChangeInput} />
-				<Sorting />
 			</div>
 
 			<ul>
