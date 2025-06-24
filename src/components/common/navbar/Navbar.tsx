@@ -1,10 +1,10 @@
-import { useAuth } from '@/app/context'
-import { internalPaths } from '@/app/router/RoutePaths'
+import { useAuth } from '@/app/providers/context'
+import { internalPaths } from '@/app/providers/router'
+import { Button } from '@mantine/core'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
-import { getDynamicComponent } from '../dynamic'
 import styles from './Navbar.module.scss'
 
-const Button = getDynamicComponent('Button')
+// const Button = getDynamicComponent('Button')
 
 export function Navbar() {
 	const location = useLocation()
@@ -55,19 +55,11 @@ export function Navbar() {
 					</Link>
 
 					{!isAuthenticated ? (
-						<Button
-							variant='BACKGROUND'
-							className={styles.authButton}
-							onClick={handleLogin}
-						>
+						<Button className={styles.authButton} onClick={handleLogin}>
 							Login
 						</Button>
 					) : (
-						<Button
-							variant='LIGHT'
-							className={styles.authButton}
-							onClick={handleLogout}
-						>
+						<Button className={styles.authButton} onClick={handleLogout}>
 							Logout
 						</Button>
 					)}

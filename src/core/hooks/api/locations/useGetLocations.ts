@@ -2,7 +2,7 @@ import { $api } from '@/app/api'
 import type { PagiantionResponse } from '@/app/api/types'
 import type { Location } from '@/data'
 import axios, { isAxiosError } from 'axios'
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 
 interface ApiResponse extends PagiantionResponse<Location> {}
 
@@ -18,6 +18,8 @@ export function useGetlocations(
 	query: { search: string },
 	pageNumber: number = 1
 ): HookReturn {
+	const cancelRef = useRef<(() => void) | null>(null)
+
 	const [loading, setLoading] = useState(true)
 	const [error, setError] = useState(false)
 	const [notFound, setNotFound] = useState(false)
@@ -31,7 +33,9 @@ export function useGetlocations(
 	}, [query])
 
 	const fetchLocations = useCallback(async () => {
-		let cancel
+		if (cancelRef.current) {
+			cancelRef.current()
+		}
 
 		try {
 			setLoading(true)
@@ -42,7 +46,9 @@ export function useGetlocations(
 					name: query.search,
 					page: pageNumber,
 				},
-				cancelToken: new axios.CancelToken(c => (cancel = c)),
+				cancelToken: new axios.CancelToken(cancel => {
+					cancelRef.current = cancel
+				}),
 			})
 
 			if (!response?.data?.results || !Array.isArray(response.data.results)) {

@@ -1,4 +1,4 @@
-import { internalPaths } from '@/app/router'
+import { internalPaths } from '@/app/providers/router'
 import { useGetDetailLocation } from '@/core/hooks/api/locations'
 import { Link, useParams } from 'react-router-dom'
 import styles from './LocationDetail.module.scss'

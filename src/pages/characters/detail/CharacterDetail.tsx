@@ -1,4 +1,4 @@
-import { internalPaths } from '@/app/router'
+import { internalPaths } from '@/app/providers/router'
 import { useGetDetailCharacter } from '@/core/hooks/api/characters'
 import { Link, useParams } from 'react-router-dom'
 import styles from './CharacterDetail.module.scss'

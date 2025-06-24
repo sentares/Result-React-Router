@@ -1,9 +1,9 @@
 import { ErrorBoundary } from '@/components/common/errorBoundary'
 import { lazy, Suspense } from 'react'
 import { createBrowserRouter } from 'react-router-dom'
-import Layout from '../layouts/Layout'
 import { PrivateRoute } from './PrivateRoute'
 import { internalPaths } from './RoutePaths'
+import { Layout } from '@/app/layouts'
 
 const Home = lazy(() => import('@/pages/home'))
 const Login = lazy(() => import('@/pages/login'))
@@ -24,7 +24,7 @@ const withSuspense = (element: React.ReactNode) => (
 	</ErrorBoundary>
 )
 
-const Router = createBrowserRouter([
+export const Router = createBrowserRouter([
 	{
 		path: internalPaths.home,
 		element: <Layout />,
@@ -64,5 +64,3 @@ const Router = createBrowserRouter([
 		element: withSuspense(<Login />),
 	},
 ])
-
-export default Router

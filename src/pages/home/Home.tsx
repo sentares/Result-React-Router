@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import styles from './Home.module.scss'
-import { internalPaths } from '@/app/router/RoutePaths'
+import { internalPaths } from '@/app/providers/router/RoutePaths'
 
 export default function Home() {
 	return (

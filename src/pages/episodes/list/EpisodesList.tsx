@@ -1,14 +1,14 @@
-import { internalPaths } from '@/app/router'
-import { getDynamicComponent } from '@/components/common/dynamic'
+import { internalPaths } from '@/app/providers/router'
 import { getCategoryFromPath } from '@/core/helpers/category'
 import { useDebounce } from '@/core/hooks'
 import { useGetEpisodes } from '@/core/hooks/api/episodes'
 import { type Episode } from '@/data'
+import { Input } from '@mantine/core'
 import { useCallback, useRef, useState, type ChangeEvent } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import styles from './EpisodesList.module.scss'
 
-const Input = getDynamicComponent('Input')
+// const Input = getDynamicComponent('Input')
 
 export default function EpisodesList() {
 	const { pathname } = useLocation()
