@@ -1,1 +1,1 @@
-export * from './getCategoryName'
+export * from './GetCategoryName'

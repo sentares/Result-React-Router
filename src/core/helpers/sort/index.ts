@@ -1,2 +1,2 @@
-export * from './sortByCreated'
+export * from './SortByCreated'
 export * from './types'
