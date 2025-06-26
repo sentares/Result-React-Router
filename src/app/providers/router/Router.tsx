@@ -9,14 +9,14 @@ const Home = lazy(() => import('@/pages/home'))
 const Login = lazy(() => import('@/pages/login'))
 const NotFound = lazy(() => import('@/pages/not-found'))
 
-const CharactersList = lazy(() => import('@/pages/characters/list'))
-const CharacterDetail = lazy(() => import('@/pages/characters/detail'))
+const CharactersList = lazy(() => import('@/pages/characters'))
+const CharacterDetail = lazy(() => import('@/pages/characters/[id]'))
 
-const LocationsList = lazy(() => import('@/pages/locations/list'))
-const LocationDetail = lazy(() => import('@/pages/locations/detail'))
+const LocationsList = lazy(() => import('@/pages/locations'))
+const LocationDetail = lazy(() => import('@/pages/locations/[id]'))
 
-const EpisodesList = lazy(() => import('@/pages/episodes/list'))
-const EpisodeDetail = lazy(() => import('@/pages/episodes/detail'))
+const EpisodesList = lazy(() => import('@/pages/episodes'))
+const EpisodeDetail = lazy(() => import('@/pages/episodes/[id]'))
 
 const withSuspense = (element: React.ReactNode) => (
 	<ErrorBoundary>
