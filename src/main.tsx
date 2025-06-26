@@ -4,6 +4,7 @@ import './app/styles/index.scss'
 
 import { registerSW } from 'virtual:pwa-register'
 
-registerSW({ immediate: true })
-
+if ('serviceWorker' in navigator) {
+	registerSW()
+}
 createRoot(document.getElementById('root')!).render(<App />)
