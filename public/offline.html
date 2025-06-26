@@ -3,7 +3,6 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Rick and Morty Universe</title>
 		<link rel="manifest" href="/manifest.json" />
 		<link rel="icon" type="image/svg+xml" href="/public/icon512_rounded.png" />
 		<link rel="apple-touch-icon" href="/icon512_rounded.png" />
@@ -11,9 +10,26 @@
 		<meta name="mobile-web-app-capable" content="yes" />
 		<meta name="apple-mobile-web-app-capable" content="yes" />
 		<meta name="apple-mobile-web-app-status-bar-style" content="default" />
+		<title>Offline</title>
+		<style>
+			body {
+				font-family: Arial, sans-serif;
+				text-align: center;
+				padding: 50px;
+				background: #f0f0f0;
+			}
+			h1 {
+				font-size: 2rem;
+				color: #333;
+			}
+			p {
+				font-size: 1.2rem;
+				color: #666;
+			}
+		</style>
 	</head>
 	<body>
-		<div id="root"></div>
-		<script type="module" src="/src/main.tsx"></script>
+		<h1>You are offline!</h1>
+		<a href="/"> Go back to Home </a>
 	</body>
 </html>
